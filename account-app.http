@@ -1,0 +1,85 @@
+# Sample http requests
+
+### signin
+POST http://localhost:8080/auth/signin
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email" : "test1@mail.com",
+  "password" : "12345"
+}
+
+> {% client.global.set("auth_token", response.body.token); %}
+
+### get all users
+GET http://localhost:8080/users?page=0
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+### get users by date of birth
+GET http://localhost:8080/users?dateOfBirth=23.05.2000
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+### get users by phone
+GET http://localhost:8080/users?phone=12223334402
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+### get users by email
+GET http://localhost:8080/users?email=test2@mail.com
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+### get users by name
+GET http://localhost:8080/users?name=test2
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+### add user data
+POST http://localhost:8080/users
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "phone" : "12223334102"
+}
+
+### update user data
+PUT http://localhost:8080/users
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "id": 6,
+  "email" : "test13@mail.com"
+}
+
+### delete user data
+DELETE http://localhost:8080/users
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "phone" : "12345678111"
+}
+
+### transfer money
+POST http://localhost:8080/transfer
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "userId": 2,
+  "value": 100
+}
